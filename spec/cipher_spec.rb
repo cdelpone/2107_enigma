@@ -27,7 +27,7 @@ RSpec.describe Cipher do
     @cipher.split_message(message)
     split_message = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
 
-    expect(@cipher.find_index(0, message)).to eq(7)
+    expect(@cipher.find_index(0)).to eq(7)
   end
 
   it 'returns the encrypted message' do
