@@ -15,7 +15,6 @@ class Cipher
   end
 
   def split_message(message)
-    # message.downcase.split('').flatten
     @new_message = (message.downcase.split("")).flatten
   end
 
@@ -25,13 +24,6 @@ class Cipher
     end
     @result
   end
-
-  # def find_index(index, message)
-  # indexed_ltr = indexed_char_set.detect do |index_set|
-  #     index_set[0] == split_message(message)[index]
-  #   end
-  #   indexed_ltr[1]
-  # end
 
   def encrypt_message
     shift = ShiftGenerator.new
@@ -43,14 +35,3 @@ class Cipher
     @encrypted_message.join
   end
 end
-  # def encrypt_message(message)
-  #   require "pry"; binding.pry
-  #   shift = ShiftGenerator.new
-  #   split_message(message).each do |letter|
-  #     find_index(split_message(message).index(letter))
-  #     new_char_index = find_index + shift.all_shifts.rotate!(3)[0]
-  #     @encrypted_message << char_set[new_char_index.to_i % 27]
-  #   end
-  #   @encrypted_message.join
-  # end
-# end
