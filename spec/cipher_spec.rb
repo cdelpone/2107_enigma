@@ -36,7 +36,6 @@ RSpec.describe Cipher do
     @cipher.split_message(message)
     split_message = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
 
-    # expect(@cipher.encrypt_message(message)).to eq('keder ohulw')
     expect(@cipher.encrypt_message).to eq('keder ohulw')
   end
 end
