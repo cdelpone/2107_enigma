@@ -9,3 +9,9 @@ RSpec.describe Cipher do
   it 'exists' do
     expect(@cipher).to be_an Cipher
   end
+
+  it 'returns 27 character set' do
+    expect(@cipher.char_set).to eq(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '])
+  end
+
+end
