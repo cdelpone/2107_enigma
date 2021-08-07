@@ -32,7 +32,6 @@ class Cipher
     @message.each do |letter|
       find_index(@message.index(letter))
       new_char_index = @result + shift.all_shifts.rotate!(3)[0]
-      # require "pry"; binding.pry
       @encrypted_message << char_set[new_char_index.to_i % 27]
     end
     @encrypted_message.join
@@ -40,7 +39,6 @@ class Cipher
 
   def decrypt_message(message)
     shift = ShiftGenerator.new
-    # require "pry"; binding.pry
     @message.each do |letter|
       find_index(@message.index(letter))
       new_char_index = @result - shift.all_shifts.rotate!(3)[0]
