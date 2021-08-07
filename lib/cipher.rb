@@ -1,8 +1,10 @@
 class Cipher
-  attr_reader :encrypted_message
+  attr_reader :encrypted_message,
+              :decrypted_message
 
   def initialize
     @encrypted_message = []
+    @decrypted_message = []
     @message = []
   end
 
@@ -30,8 +32,20 @@ class Cipher
     @message.each do |letter|
       find_index(@message.index(letter))
       new_char_index = @result + shift.all_shifts.rotate!(3)[0]
+      # require "pry"; binding.pry
       @encrypted_message << char_set[new_char_index.to_i % 27]
     end
     @encrypted_message.join
+  end
+
+  def decrypt_message(message)
+    shift = ShiftGenerator.new
+    # require "pry"; binding.pry
+    @message.each do |letter|
+      find_index(@message.index(letter))
+      new_char_index = @result - shift.all_shifts.rotate!(3)[0]
+      @decrypted_message << char_set[new_char_index.to_i % 27]
+    end
+    @decrypted_message.join
   end
 end
