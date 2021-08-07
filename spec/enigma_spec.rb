@@ -28,11 +28,11 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
   end
 
-  xit 'encrypts a message with a randomly generated key and todays date' do
+  it 'encrypts a message with a randomly generated key and todays date' do
     expected = {
                 encryption: 'keder ohulw',
-                key: '02715',
-                date: '040895'
+                key: '70185',
+                date: '070821'
               }
     expect(@enigma.encrypt("hello world")).to eq(expected)
 
