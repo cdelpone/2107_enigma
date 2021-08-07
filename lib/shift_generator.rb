@@ -29,11 +29,10 @@ class ShiftGenerator
 
   def transmission_date(date = nil)
     date = Date.today.strftime('%d%m%y'.gsub('yy', '%y')) if date.nil?
-    date = (date.to_i**2).to_s
-    pry
   end
 
   def assign_offsets
+    transmission_date = (date.to_i**2).to_s
     @a_offset = transmission_date[-4].to_i
     @b_offset = transmission_date[-3].to_i
     @c_offset = transmission_date[-2].to_i
