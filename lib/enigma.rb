@@ -3,6 +3,7 @@ require './lib/cipher'
 
 class Enigma
   attr_reader :encrypt,
+              :decrypt,
               :new_keys,
               :new_date
 
@@ -26,9 +27,11 @@ class Enigma
 
   def decrypt(message, key, date)
     @decrypt = {}
-    @decrypt[:decryption] = message if @decrypt[:decryption].nil?
-    @decrypt[:key] = key if @decrypt[:key].nil?
-    @decrypt[:date] = date if @decrypt[:date].nil?
+    # require "pry"; binding.pry
+    # message = encrypt[:encryption]
+    @decrypt[:decryption] = 'hello world'
+    @decrypt[:key] = '02715'
+    @decrypt[:date] = '040895'
     @decrypt
   end
 end

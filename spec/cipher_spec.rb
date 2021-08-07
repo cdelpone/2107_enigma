@@ -31,10 +31,20 @@ RSpec.describe Cipher do
   end
 
   it 'returns the encrypted message' do
-    # allow_any_instance_of(ShiftGenerator).to receive(:shift).and_return([03, 27, 73, 20])
+    # allow_any_instance_of(ShiftGenerator).to receive(:all_shifts).and_return([03, 27, 73, 20])
+    # @all_shifts
+    # all_shifts = [03, 27, 73, 20]
+    # @shift.all_shifts
+    # @shift.all_shifts = [03, 27, 73, 20]
+    # @shift.all_shifts = create_shifts([02,27,71,15], [1,0,2,5])
     @message = 'hello world'
     @cipher.split_message(@message)
-
     expect(@cipher.encrypt_message('hello world')).to eq('keder ohulw')
+  end
+
+  it 'decrypts the encrypted message' do
+    @message = "keder ohulw"
+    @cipher.split_message(@message)
+    expect(@cipher.decrypt_message('keder ohulw')).to eq('hello world')
   end
 end
