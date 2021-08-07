@@ -31,11 +31,10 @@ RSpec.describe Cipher do
   end
 
   it 'returns the encrypted message' do
-    allow_any_instance_of(ShiftGenerator).to receive(:shift).and_return([03, 27, 73, 20])
-    message = 'hello world'
-    @cipher.split_message(message)
-    split_message = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+    # allow_any_instance_of(ShiftGenerator).to receive(:shift).and_return([03, 27, 73, 20])
+    @message = 'hello world'
+    @cipher.split_message(@message)
 
-    expect(@cipher.encrypt_message).to eq('keder ohulw')
+    expect(@cipher.encrypt_message('hello world')).to eq('keder ohulw')
   end
 end
