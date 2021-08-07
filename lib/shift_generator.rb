@@ -4,7 +4,8 @@ class ShiftGenerator
   attr_reader :assign_keys,
               :assign_offsets,
               :all_shifts,
-              :date
+              :date,
+              :random_nums
 
   def initialize
     @assign_keys = assign_keys
@@ -15,6 +16,10 @@ class ShiftGenerator
   def random_nums
     nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     @random_nums = nums.sample(5)
+  end
+
+  def random_key(random_nums)
+    @random_nums.join.to_s
   end
 
   def assign_keys

@@ -14,6 +14,11 @@ RSpec.describe ShiftGenerator do
     expect(@shift.random_nums.length).to eq 5
   end
 
+  it 'returns random number as a string' do
+    expect(@shift.random_key([9, 4, 3, 8, 7])).to be_a String
+    expect(@shift.random_key([9, 4, 3, 8, 7]).length).to eq 5
+  end
+
   it 'returns keys an array' do
     # allow(@shift.assign_keys).to receive(:random_nums).and_return([9, 4, 3, 7, 1])
     # expect(@shift.assign_keys).to eq [94, 43, 37, 71]
