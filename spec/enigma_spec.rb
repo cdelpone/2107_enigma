@@ -10,7 +10,7 @@ RSpec.describe Enigma do
     expect(@enigma).to be_an Enigma
   end
 
-  xit 'encrypts' do
+  it 'encrypts' do
     expected = {
                 encryption: 'keder ohulw',
                 key: '02715',
@@ -19,19 +19,31 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
 
-  xit 'decrypts' do
+  it 'encrypts a message with a key as todays day' do
     expected = {
-                decryption: 'hello world',
+                encryption: 'keder ohulw',
                 key: '02715',
-                date: '040895'
+                date: '070821'
               }
-    expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
+    expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
   end
 
-  xit 'encrypts a message with a key as todays day' do
-    # expected = encryption hash
+  it 'encrypts a message with a randomly generated key and todays date' do
+    expected = {
+                encryption: 'keder ohulw',
+                key: '70185',
+                date: '070821'
+              }
+    expect(@enigma.encrypt("hello world")).to eq(expected)
 
-    encrypted = enigma.encrypt("hello world", "02715")
+  end
+  xit 'decrypts' do
+    expected = {
+      decryption: 'hello world',
+      key: '02715',
+      date: '040895'
+    }
+    expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
   end
 
   xit 'decrypts a message with a key as todays day' do
@@ -40,9 +52,4 @@ RSpec.describe Enigma do
     expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(expected)
   end
 
-  xit 'encrypts a message with a randomly generated key and todays date' do
-    # expected = encryption hash
-
-    expect(@enigma.encrypt("hello world")).to eq(expected)
-  end
 end

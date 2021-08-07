@@ -4,7 +4,8 @@ class ShiftGenerator
   attr_reader :assign_keys,
               :assign_offsets,
               :all_shifts,
-              :date
+              :date,
+              :random_nums
 
   def initialize
     @assign_keys = assign_keys
@@ -15,6 +16,10 @@ class ShiftGenerator
   def random_nums
     nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     @random_nums = nums.sample(5)
+  end
+
+  def random_key(random_nums)
+    @random_nums.join.to_s
   end
 
   def assign_keys
@@ -29,15 +34,14 @@ class ShiftGenerator
 
   def transmission_date(date = nil)
     date = Date.today.strftime('%d%m%y'.gsub('yy', '%y')) if date.nil?
-    date = (date.to_i**2).to_s
   end
 
   def assign_offsets
-    split_date = transmission_date.split('')
-    @a_offset = split_date.values_at(-4).map(&:to_i)
-    @b_offset = split_date.values_at(-3).map(&:to_i)
-    @c_offset = split_date.values_at(-2).map(&:to_i)
-    @d_offset = split_date.values_at(-1).map(&:to_i)
+    transmission_date = (date.to_i**2).to_s
+    @a_offset = transmission_date[-4].to_i
+    @b_offset = transmission_date[-3].to_i
+    @c_offset = transmission_date[-2].to_i
+    @d_offset = transmission_date[-1].to_i
     combo_offsets = @a_offset, @b_offset, @c_offset, @d_offset
     combo_offsets.flatten
   end
