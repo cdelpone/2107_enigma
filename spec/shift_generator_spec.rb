@@ -19,24 +19,19 @@ RSpec.describe ShiftGenerator do
     expect(@shift.random_key([9, 4, 3, 8, 7]).length).to eq 5
   end
 
-  xit 'returns keys an array' do
+  it 'returns keys an array' do
     # allow(@shift.assign_keys).to receive(:random_nums).and_return([9, 4, 3, 7, 1])
     # expect(@shift.assign_keys).to eq [94, 43, 37, 71]
     expect(@shift.assign_keys.class).to eq Array
   end
 
-  # it 'squares the transmission date' do
-  #   date = Date.today.strftime('%d%m%y'.gsub('yy', '%y')) if date.nil?
-  #
-  #   expect(@shift.transmission_date).to eq("5015614041")
-  # end
   it 'returns todays date as a string' do
     date = Date.today.strftime('%d%m%y'.gsub('yy', '%y')) if date.nil?
 
     expect(@shift.transmission_date).to eq(date)
   end
 
-  xit 'returns and assigns offsets' do
+  it 'returns and assigns offsets' do
     # allow(@shift.transmission_date('040895')).to receive(:date).and_return('040895')
     # expected = a_offset = 1,
     #            b_offset = 0,

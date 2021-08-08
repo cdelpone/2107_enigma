@@ -46,7 +46,7 @@ RSpec.describe Enigma do
     expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
   end
 
-  xit 'decrypts a message with a key as todays day' do
+  it 'decrypts a message with a key as todays day' do
     expected = {
                 decryption: 'hello world',
                 key: '02715',
