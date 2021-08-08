@@ -25,13 +25,12 @@ class Enigma
     @encrypt
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message = @encrypt[:encryption], key = @encrypt[:key], date = @new_date)
     @decrypt = {}
-    # require "pry"; binding.pry
-    # message = encrypt[:encryption]
-    @decrypt[:decryption] = 'hello world'
-    @decrypt[:key] = '02715'
-    @decrypt[:date] = '040895'
+    message = @cipher.split_message(message)
+    @decrypt[:decryption] = @cipher.decrypt_message(message)
+    @decrypt[:key] = key
+    @decrypt[:date] = date
     @decrypt
   end
 end
