@@ -1,9 +1,7 @@
 require 'date'
 
 class ShiftGenerator
-  attr_reader :assign_keys,
-              :assign_offsets,
-              :all_shifts,
+  attr_reader :all_shifts,
               :combo_keys,
               :combo_offsets,
               :random_nums
@@ -11,9 +9,6 @@ class ShiftGenerator
   def initialize
     @combo_keys = combo_keys
     @combo_offsets = combo_offsets
-    @assign_keys = assign_keys
-    @assign_offsets = assign_offsets
-    @all_shifts = create_shifts(assign_keys, assign_offsets)
     @all_shifts = create_shifts(combo_keys, combo_offsets)
   end
 
