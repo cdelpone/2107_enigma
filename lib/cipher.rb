@@ -14,7 +14,8 @@ class Cipher
   end
 
   def change_message
-    message.downcase.split("")
+    pattern = /(\'|\!|\?|\,|\"|\.|\*|\/|\-|\\)/
+    message.downcase.gsub(pattern, "").split("")
   end
 
   def find_index(index)
