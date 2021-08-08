@@ -20,8 +20,6 @@ RSpec.describe ShiftGenerator do
   end
 
   it 'returns keys an array' do
-    # allow(@shift.assign_keys).to receive(:random_nums).and_return([9, 4, 3, 7, 1])
-    # expect(@shift.assign_keys).to eq [94, 43, 37, 71]
     expect(@shift.assign_keys.class).to eq Array
   end
 
@@ -32,23 +30,10 @@ RSpec.describe ShiftGenerator do
   end
 
   it 'returns and assigns offsets' do
-    # allow(@shift.transmission_date('040895')).to receive(:date).and_return('040895')
-    # expected = a_offset = 1,
-    #            b_offset = 0,
-    #            c_offset = 2,
-    #            d_offset = 5
-    #
     expect(@shift.assign_offsets.class).to eq Array
   end
 
   it 'can create shifts' do
-    combo_keys = [51, 16, 69, 90]
-    combo_offsets = [4, 0, 4, 1]
-    # @a_shift = shift.values_at(0)
-    # @b_shift = shift.values_at(1)
-    # @c_shift = shift.values_at(2)
-    # @d_shift = shift.values_at(3)
-    shift = [55, 16, 73, 91]
     expect(@shift.create_shifts(combo_keys, combo_offsets)).to eq([55, 16, 73, 91])
   end
 end
