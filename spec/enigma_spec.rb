@@ -52,7 +52,7 @@ RSpec.describe Enigma do
                 key: '02715',
                 date: '040895'
               }
-    expect(@enigma.decrypt(encrypt[:encryption], "02715")).to eq(expected)
+    expect(@enigma.decrypt(@encrypt[:encryption], "02715")).to eq(expected)
   end
 
 end
