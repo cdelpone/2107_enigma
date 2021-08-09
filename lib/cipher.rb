@@ -18,8 +18,7 @@ class Cipher
   end
 
   def change_message
-    pattern = /(\'|\!|\?|\,|\"|\.|\*|\/|\-|\\)/
-    message.downcase.gsub(pattern, "").split("")
+    message.downcase.split("")
   end
 
   def find_index(index)
@@ -31,10 +30,13 @@ class Cipher
   def encrypt_message
     current_shift = @shift.all_shifts
     change_message.each do |letter|
-      find_index(change_message.index(letter))
-      new_char_index = @result.to_i + (current_shift[0]).to_i
-      @encrypted_message << char_set[new_char_index.to_i % 27]
-      current_shift = current_shift.rotate
+      if char_set.include?(letter)
+        find_index(change_message.index(letter))
+        new_char_index = @result.to_i + (current_shift[0]).to_i
+        @encrypted_message << char_set[new_char_index.to_i % 27]
+        current_shift = current_shift.rotate
+      else @encrypted_message << letter
+      end
     end
     @encrypted_message.join
   end
@@ -42,10 +44,13 @@ class Cipher
   def decrypt_message
     current_shift = @shift.all_shifts
     change_message.each do |letter|
+      if char_set.include?(letter)
       find_index(change_message.index(letter))
-      new_char_index = @result.to_i - (current_shift[0]).to_i
-      @decrypted_message << char_set[new_char_index.to_i % 27]
-      current_shift = current_shift.rotate
+        new_char_index = @result.to_i - (current_shift[0]).to_i
+        @decrypted_message << char_set[new_char_index.to_i % 27]
+        current_shift = current_shift.rotate
+      else @decrypted_message << letter
+      end
     end
     @decrypted_message.join
   end

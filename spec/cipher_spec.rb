@@ -15,8 +15,8 @@ RSpec.describe Cipher do
     expect(@cipher.char_set).to eq(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '])
     end
 
-  it 'turns the incoming message to an array of all lower case and removes special characters' do
-    expect(@cipher.change_message).to eq(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'])
+  it 'turns the incoming message to an array of all lower case' do
+    expect(@cipher.change_message).to eq(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '!'])
   end
 
   it 'returns char set index number for given letter' do
@@ -26,10 +26,10 @@ RSpec.describe Cipher do
   it 'returns the encrypted message' do
     shift = ShiftGenerator.new('02715', '040895')
 
-    expect(@cipher.encrypt_message).to eq('keder ohulw')
+    expect(@cipher.encrypt_message).to eq('keder ohulw!')
   end
 
   it 'decrypts the encrypted message' do
-    expect(@cipher2.decrypt_message).to eq('hello world')
+    expect(@cipher2.decrypt_message).to eq('hello world!')
   end
 end
