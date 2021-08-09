@@ -2,8 +2,8 @@ require 'spec_helper'
 
 RSpec.describe Cipher do
   before :each do
-    @cipher = Cipher.new('Hello world!')
-    @cipher2 = Cipher.new('keder ohulw')
+    @cipher = Cipher.new('Hello world!','02715', '040895')
+    @cipher2 = Cipher.new('keder ohulw!','02715', '040895')
   end
 
   it 'exists' do
@@ -24,6 +24,8 @@ RSpec.describe Cipher do
   end
 
   it 'returns the encrypted message' do
+    shift = ShiftGenerator.new('02715', '040895')
+
     expect(@cipher.encrypt_message).to eq('keder ohulw')
   end
 
