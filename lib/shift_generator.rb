@@ -15,7 +15,7 @@ class ShiftGenerator
   end
 
   def assign_keys
-    new_key = random_nums if @key.nil?
+    @key = random_nums if key.nil?
     a_key = @key[0..1].to_i
     b_key = @key[1..2].to_i
     c_key = @key[2..3].to_i
