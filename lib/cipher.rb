@@ -46,6 +46,5 @@ class Cipher
       current_shift = current_shift.rotate
     end
     @decrypted_message.join
-    # require "pry"; binding.pry
   end
 end

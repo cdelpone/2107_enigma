@@ -2,9 +2,7 @@ require 'date'
 
 class ShiftGenerator
   attr_reader :key,
-              :date,
-              :assigned_keys,
-              :assigned_offsets
+              :date
 
   def initialize(key, date)
     @key = key
@@ -17,6 +15,7 @@ class ShiftGenerator
   end
 
   def assign_keys
+    new_key = random_nums if @key.nil?
     a_key = @key[0..1].to_i
     b_key = @key[1..2].to_i
     c_key = @key[2..3].to_i
@@ -28,7 +27,7 @@ class ShiftGenerator
     if @date.nil?
       @date = Date.today.strftime('%d%m%y'.gsub('yy', '%y'))
     end
-    transmission_date = @date
+    @date
   end
 
   def assign_offsets
