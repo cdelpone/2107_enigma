@@ -18,9 +18,3 @@ class Decrypt
 
   puts "Created #{file} with the key #{result[:key]} and date #{result[:date]}"
 end
-
-# $ ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818
-# encrypted.txt (arg[0]) => read the excrypted message here
-# decrypted.txt (arg[1]) => write decrypted message
-# 82648 (arg[2]) => key for decryption
-# 240818 (arg[3]) => date for decryption
