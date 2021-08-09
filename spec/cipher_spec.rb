@@ -19,10 +19,6 @@ RSpec.describe Cipher do
     expect(@cipher.change_message).to eq(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '!'])
   end
 
-  it 'ignores special characters' do
-
-  end
-
   it 'returns char set index number for given letter' do
     expect(@cipher.find_index(0)).to eq(7)
   end
@@ -30,10 +26,10 @@ RSpec.describe Cipher do
   it 'returns the encrypted message' do
     shift = ShiftGenerator.new('02715', '040895')
 
-    expect(@cipher.encrypt_message).to eq('keder ohulw')
+    expect(@cipher.encrypt_message).to eq('keder ohulw!')
   end
 
   it 'decrypts the encrypted message' do
-    expect(@cipher2.decrypt_message).to eq('hello world')
+    expect(@cipher2.decrypt_message).to eq('hello world!')
   end
 end
