@@ -18,7 +18,7 @@ class Cipher
   end
 
   def change_message
-    message.downcase
+    message.downcase.split("")
   end
 
   def find_index(index)
