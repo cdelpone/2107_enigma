@@ -1,12 +1,16 @@
+require './lib/shift_generator'
+
 class Cipher
   attr_reader :encrypted_message,
               :decrypted_message,
-              :message
+              :message,
+              :shift
 
-  def initialize(message)
+  def initialize(message, key, date)
     @message = message
     @encrypted_message = []
     @decrypted_message = []
+    @shift = ShiftGenerator.new(key, date)
   end
 
   def char_set
@@ -25,8 +29,7 @@ class Cipher
   end
 
   def encrypt_message
-    shift = ShiftGenerator.new('02715', '040895')
-    current_shift = shift.all_shifts
+    current_shift = @shift.all_shifts
     change_message.each do |letter|
       find_index(change_message.index(letter))
       new_char_index = @result.to_i + (current_shift[0]).to_i
@@ -37,8 +40,7 @@ class Cipher
   end
 
   def decrypt_message
-    shift = ShiftGenerator.new('02715', '040895')
-    current_shift = shift.all_shifts
+    current_shift = @shift.all_shifts
     change_message.each do |letter|
       find_index(change_message.index(letter))
       new_char_index = @result.to_i - (current_shift[0]).to_i
