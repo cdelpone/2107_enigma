@@ -4,6 +4,8 @@ RSpec.describe Enigma do
 
   before :each do
     @enigma = Enigma.new
+    # @shift = ShiftGenerator.new(key, date)
+    # @cipher = Cipher.new(message)
   end
 
   it 'exists' do
@@ -19,20 +21,20 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
 
-  it 'encrypts a message with a key as todays day' do
+  it 'encrypts a message with a key and todays day' do
     expected = {
                 encryption: 'keder ohulw',
                 key: '02715',
-                date: '070821'
+                date: '080821'
               }
     expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
   end
 
-  it 'encrypts a message with a randomly generated key and todays date' do
+  xit 'encrypts a message with a randomly generated key and todays date' do
     expected = {
                 encryption: 'keder ohulw',
-                key: '70185',
-                date: '070821'
+                key: 'xyzqr',
+                date: '080821'
               }
     expect(@enigma.encrypt("hello world")).to eq(expected)
   end
@@ -50,9 +52,9 @@ RSpec.describe Enigma do
     expected = {
                 decryption: 'hello world',
                 key: '02715',
-                date: '040895'
+                date: '080821'
               }
-    expect(@enigma.decrypt(@encrypt[:encryption], "02715")).to eq(expected)
+    expect(@enigma.decrypt('keder ohulw', "02715")).to eq(expected)
   end
 
 end
