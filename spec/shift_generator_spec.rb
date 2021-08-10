@@ -4,7 +4,6 @@ RSpec.describe ShiftGenerator do
   before :each do
     @shift = ShiftGenerator.new('02715', '040895')
     @shift2 = ShiftGenerator.new('02715', date = nil)
-
   end
 
   it 'exists' do
@@ -25,12 +24,12 @@ RSpec.describe ShiftGenerator do
 
   it 'returns keys an array' do
     expect(@shift.assign_keys.class).to eq Array
-    expect(@shift.assign_keys).to eq([02, 27, 71, 15])
+    expect(@shift.assign_keys).to eq([0o2, 27, 71, 15])
   end
 
   it 'returns todays date as a string' do
     expect(@shift.transmission_date).to eq('040895')
-    expect(@shift2.transmission_date).to eq("090821")
+    expect(@shift2.transmission_date).to eq('100821')
   end
 
   it 'returns and assigns offsets' do

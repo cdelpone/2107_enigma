@@ -14,11 +14,11 @@ class Cipher
   end
 
   def char_set
-    ("a".."z").to_a << " "
+    ('a'..'z').to_a << ' '
   end
 
   def change_message
-    message.downcase.split("")
+    message.downcase.split('')
   end
 
   def find_index(index)
@@ -45,7 +45,7 @@ class Cipher
     current_shift = @shift.all_shifts
     change_message.each do |letter|
       if char_set.include?(letter)
-      find_index(change_message.index(letter))
+        find_index(change_message.index(letter))
         new_char_index = @char_index.to_i - (current_shift[0]).to_i
         @decrypted_message << char_set[new_char_index % 27]
         current_shift = current_shift.rotate

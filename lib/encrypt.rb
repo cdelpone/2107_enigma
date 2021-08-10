@@ -1,10 +1,9 @@
 require_relative 'enigma'
 
 class Encrypt
-
   @enigma = Enigma.new
 
-  file = File.open(ARGV.first, "r")
+  file = File.open(ARGV.first, 'r')
 
   text = file.read.chomp
 
@@ -12,7 +11,7 @@ class Encrypt
 
   file_output = ARGV.last
 
-  new_file = File.open(file_output, "w")
+  new_file = File.open(file_output, 'w')
 
   new_file.write(result[:encryption])
 
