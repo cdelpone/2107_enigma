@@ -23,10 +23,8 @@ class ShiftGenerator
     assigned_keys = a_key, b_key, c_key, d_key
   end
 
-  def transmission_date(date = nil)
-    if @date.nil?
-      @date = Date.today.strftime('%d%m%y'.gsub('yy', '%y'))
-    end
+  def transmission_date(_date = nil)
+    @date = Date.today.strftime('%d%m%y'.gsub('yy', '%y')) if @date.nil?
     @date
   end
 
@@ -43,7 +41,6 @@ class ShiftGenerator
   def all_shifts
     assign_keys
     assign_offsets
-    shift = [assign_keys, assign_offsets].transpose.map(&:sum)
-    shift
+    [assign_keys, assign_offsets].transpose.map(&:sum)
   end
 end
