@@ -39,6 +39,17 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
   end
 
+  it 'decrypts a message with a key and todays day' do
+    date = Date.today.strftime('%d%m%y'.gsub('yy', '%y'))
+
+    expected = {
+                decryption: 'hello world',
+                key: '02715',
+                date: date
+              }
+    expect(@enigma.decrypt('keder ohulw', "02715")).to eq(expected)
+  end
+
   it 'encrypts a message with a randomly generated key and todays date' do
     date = Date.today.strftime('%d%m%y'.gsub('yy', '%y'))
 
@@ -48,17 +59,6 @@ RSpec.describe Enigma do
                 date: date
               }
     expect(@enigma.encrypt("hello world")).to eq(expected)
-  end
-
-  it 'decrypts a message with a key as todays day' do
-    date = Date.today.strftime('%d%m%y'.gsub('yy', '%y'))
-
-    expected = {
-                decryption: 'hello world',
-                key: '02715',
-                date: date
-              }
-    expect(@enigma.decrypt('keder ohulw', "02715")).to eq(expected)
   end
 
 end
