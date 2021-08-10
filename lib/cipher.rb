@@ -33,7 +33,7 @@ class Cipher
       if char_set.include?(letter)
         find_index(change_message.index(letter))
         new_char_index = @result.to_i + (current_shift[0]).to_i
-        @encrypted_message << char_set[new_char_index.to_i % 27]
+        @encrypted_message << char_set[new_char_index % 27]
         current_shift = current_shift.rotate
       else @encrypted_message << letter
       end
@@ -47,7 +47,7 @@ class Cipher
       if char_set.include?(letter)
       find_index(change_message.index(letter))
         new_char_index = @result.to_i - (current_shift[0]).to_i
-        @decrypted_message << char_set[new_char_index.to_i % 27]
+        @decrypted_message << char_set[new_char_index % 27]
         current_shift = current_shift.rotate
       else @decrypted_message << letter
       end

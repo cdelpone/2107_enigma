@@ -9,6 +9,9 @@ RSpec.describe Cipher do
   it 'exists' do
     expect(@cipher).to be_an Cipher
     expect(@cipher.message).to eq('Hello world!')
+    expect(@cipher.encrypted_message).to eq([])
+    expect(@cipher.encrypted_message).to eq([])
+    expect(@cipher.shift).to be_a ShiftGenerator
   end
 
   it 'returns 27 character set' do
@@ -21,11 +24,10 @@ RSpec.describe Cipher do
 
   it 'returns char set index number for given letter' do
     expect(@cipher.find_index(0)).to eq(7)
+    # expect().to eq()
   end
 
   it 'returns the encrypted message' do
-    shift = ShiftGenerator.new('02715', '040895')
-
     expect(@cipher.encrypt_message).to eq('keder ohulw!')
   end
 
