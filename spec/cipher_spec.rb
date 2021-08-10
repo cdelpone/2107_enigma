@@ -25,7 +25,6 @@ RSpec.describe Cipher do
 
   it 'returns char set index number for given letter' do
     expect(@cipher.find_index(0)).to eq(7)
-    # expect().to eq()
   end
 
   it 'returns the encrypted message' do
