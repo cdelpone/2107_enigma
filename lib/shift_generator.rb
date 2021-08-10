@@ -45,6 +45,5 @@ class ShiftGenerator
     assign_offsets
     shift = [assign_keys, assign_offsets].transpose.map(&:sum)
     shift
-    # require "pry"; binding.pry
   end
 end
