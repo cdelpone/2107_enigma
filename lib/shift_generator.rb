@@ -44,10 +44,6 @@ class ShiftGenerator
     assign_keys
     assign_offsets
     shift = [assign_keys, assign_offsets].transpose.map(&:sum)
-    @a_shift = shift[0]
-    @b_shift = shift[1]
-    @c_shift = shift[2]
-    @d_shift = shift[3]
     shift
   end
 end
