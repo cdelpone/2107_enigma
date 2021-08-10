@@ -9,8 +9,6 @@ RSpec.describe Cipher do
   it 'exists' do
     expect(@cipher).to be_an Cipher
     expect(@cipher.message).to eq('Hello world!')
-    expect(@cipher.encrypted_message).to eq([])
-    expect(@cipher.encrypted_message).to eq([])
     expect(@cipher.shift).to be_a ShiftGenerator
   end
 
@@ -27,11 +25,11 @@ RSpec.describe Cipher do
     expect(@cipher.find_index(0)).to eq(7)
   end
 
-  it 'returns the encrypted message' do
-    expect(@cipher.encrypt_message).to eq('keder ohulw!')
+  it 'Encrypts the message' do
+    expect(@cipher.crypt_message(1)).to eq('keder ohulw!')
   end
 
   it 'decrypts the encrypted message' do
-    expect(@cipher2.decrypt_message).to eq('hello world!')
+    expect(@cipher2.crypt_message(-1)).to eq('hello world!')
   end
 end

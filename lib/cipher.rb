@@ -1,15 +1,11 @@
 require './lib/shift_generator'
 
 class Cipher
-  attr_reader :encrypted_message,
-              :decrypted_message,
-              :message,
+  attr_reader :message,
               :shift
 
   def initialize(message, key, date)
     @message = message
-    @encrypted_message = []
-    @decrypted_message = []
     @shift = ShiftGenerator.new(key, date)
   end
 
@@ -27,31 +23,18 @@ class Cipher
     end
   end
 
-  def encrypt_message
+  def crypt_message(direction)
+    crypted_message = []
     current_shift = @shift.all_shifts
     change_message.each do |letter|
       if char_set.include?(letter)
         find_index(change_message.index(letter))
-        new_char_index = @char_index.to_i + (current_shift[0]).to_i
-        @encrypted_message << char_set[new_char_index % 27]
+        new_char_index = @char_index.to_i + (direction * (current_shift[0]).to_i)
+        crypted_message << char_set[new_char_index % 27]
         current_shift = current_shift.rotate
-      else @encrypted_message << letter
+      else crypted_message << letter
       end
     end
-    @encrypted_message.join
-  end
-
-  def decrypt_message
-    current_shift = @shift.all_shifts
-    change_message.each do |letter|
-      if char_set.include?(letter)
-        find_index(change_message.index(letter))
-        new_char_index = @char_index.to_i - (current_shift[0]).to_i
-        @decrypted_message << char_set[new_char_index % 27]
-        current_shift = current_shift.rotate
-      else @decrypted_message << letter
-      end
-    end
-    @decrypted_message.join
+    crypted_message.join
   end
 end
